@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core'
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core'
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable'
 import { Question } from '@/components/Question'
 import { Progress } from '@/components/ui/progress'
@@ -45,13 +45,13 @@ export default function Quiz() {
     })
   )
 
-  function handleDragEnd(event: { active: any; over: any }) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event
 
-    if (active.id !== over.id) {
+    if (active.id !== over?.id) {
       setAnswers((items) => {
         const oldIndex = items[currentQuestion].findIndex((item) => item.id === active.id)
-        const newIndex = items[currentQuestion].findIndex((item) => item.id === over.id)
+        const newIndex = items[currentQuestion].findIndex((item) => item.id === over?.id)
 
         return items.map((item, index) => {
           if (index === currentQuestion) {
