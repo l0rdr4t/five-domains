@@ -79,8 +79,8 @@ export default function Quiz() {
           <div key={question.id} className="mb-4">
             <h2 className="text-xl font-semibold">{question.text}</h2>
             <ol className="list-decimal pl-6">
-              {answers[index].map((answer, _i) => (
-                <li key={answer.id}>{answer.text}</li>
+              {answers[index].map((answer, i) => (
+                <li key={answer.id}>{answer.text} | {i.toString()}</li>
               ))}
             </ol>
           </div>
