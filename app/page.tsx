@@ -45,7 +45,7 @@ export default function Quiz() {
     })
   )
 
-  function handleDragEnd(event) {
+  function handleDragEnd(event: { active: any; over: any }) {
     const { active, over } = event
 
     if (active.id !== over.id) {
